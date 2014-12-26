@@ -10,7 +10,9 @@ class Users(models.Model):
 	follow_ids = models.TextField()
 
 	class Meta:
+		#managed = True
 		db_table = u'users'
+		ordering = ('id',)
 
 		def __str__(self):	# __unicode__ on Python 2
 			return self.name
@@ -19,8 +21,8 @@ class Follow(models.Model):
 	'''
 	Description of followers
 	'''
-	uid = models.IntegerField()
-	follow_uid = models.IntegerField()
+	user = models.ForeignKey('Users', related_name='user')
+	follow_user = models.ForeignKey('Users', related_name='follow_user')
 
 	class Meta:
 		db_table = 'user_follow'

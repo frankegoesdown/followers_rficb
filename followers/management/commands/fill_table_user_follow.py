@@ -29,7 +29,7 @@ class Command(BaseCommand):
 					self.stdout.write('Wrong follower id=%s, for uid: %s\n' % (follower_id, user.id))
 					continue
 				try:
-					foll = Follow(uid = user.id, follow_uid = follower_id)
+					foll = Follow(user = user.id, follow_user = follower_id)
 					foll.save()
 					self.stdout.write('Add follower id=%s, for user: %s\n'% (follower_id, user.id))
 				except:
